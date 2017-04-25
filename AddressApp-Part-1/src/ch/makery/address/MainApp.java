@@ -70,7 +70,7 @@ public class MainApp extends Application {
 			rootLayout.setCenter(musicOverview);
 			// Give the controller access to the main app.
 			InnerOverviewController controller = loader.getController();
-			controller.setMainApp(this);
+			//controller.setMainApp(this);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -123,12 +123,12 @@ public class MainApp extends Application {
 				String[] split = currentLine.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)");
 
 				for (int i = 0; i < split.length; i++) {
-					// remove null values
-//					if (split[i].equals(null))
-//						split[i] = "";
+					 //remove null values
+					if (split[i].equals(null))
+						split[i] = "";
 					// remove trailing quotes if any
-//					split[i].replaceAll("(?=[^\"]*$)", " ");
-//					split[i].trim();
+					split[i].replaceAll("^\"|$\"", " ");
+					split[i].trim();
 				}
 				musicData.add(new MusicEntry(split[0], split[1], split[2], split[3]));
 			}
