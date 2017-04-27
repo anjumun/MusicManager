@@ -1,6 +1,8 @@
 package ch.makery.address.model;
 
 
+import java.util.ArrayList;
+
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
@@ -19,6 +21,7 @@ public class MusicEntry {
 		this.artist = new SimpleStringProperty(artist.trim());
 		this.year = new SimpleStringProperty(year);
 		this.combined = new SimpleStringProperty(combined.trim());
+	
 	}
 	
 	public String getSong(){

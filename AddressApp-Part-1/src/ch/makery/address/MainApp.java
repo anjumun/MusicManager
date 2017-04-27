@@ -32,7 +32,7 @@ public class MainApp extends Application {
 		showInner();
 	}
 
-	/**
+	/** 
 	 * Initializes the root layout.
 	 */
 	public void initRootLayout() {

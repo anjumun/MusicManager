@@ -35,9 +35,13 @@ public class InnerOverviewController {
 	@FXML
 	private Button remove;
 	@FXML
+	private Button bubbleSortYear;
+	@FXML
 	private TextField bottomField;
 	@FXML
 	private Label timer;
+	@FXML
+	private Label bubbleTimer;
 
 
 	// Reference to the main application.
@@ -72,7 +76,7 @@ public class InnerOverviewController {
 		linearSearch();
 		addEntry();
 		removeSelectedEntry();
-
+		bubbleSortYear();
 
 		System.out.println("initialize ran");
 
@@ -237,4 +241,43 @@ public class InnerOverviewController {
 		});
 		
 	}
-}
+
+	private void bubbleSortYear() {
+		// TODO Auto-generated method stub
+		
+		bubbleSortYear.setOnAction((event) -> {
+			double start = System.currentTimeMillis();
+			double time = 0;
+			double end=0;
+		//ObservableList<MusicEntry> arr = FXCollections.observableArrayList(list);
+		//arr = list;
+        int n = list.size();  
+        MusicEntry temp;  
+         for(int i=0; i < n; i++){
+                 for(int j=1; j < (n-i); j++){
+                	 if((list.get(j-1).getYear().equals(""))){
+                		 temp = list.get(j-1);  
+                         list.set(j-1,list.get(j));  
+                         list.set(j, temp);
+                         }
+                	 
+                	 else if(Double.parseDouble((list.get(j-1).getYear().trim()))> Double.parseDouble(list.get(j).getYear().trim())){  
+                                 temp = list.get(j-1);  
+                                 list.set(j-1,list.get(j));  
+                                 list.set(j, temp); 
+                         } 
+
+                          
+                 }  
+         }  
+         end = System.currentTimeMillis();
+         time = end - start;
+         String timer = Double.toString(time);
+         bubbleTimer.setText(timer);
+         musicTable.setItems(list);
+         musicTable.refresh();
+         
+		});
+		
+	}
+}// end class
